@@ -207,4 +207,13 @@ body {
   display: flex;
   gap:20px;
   box-shadow: 0 2px 8px red;
+  justify-content: center;
+  
+}
+.img1{
+  width: 600px;
+  height: 100px;
+  margin-top: 30px;
+  border-radius: 16px;
+
 }
