@@ -1,0 +1,14 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:1.0 AS builder
+WORKDIR /src
+COPY src/Hello/project.json ./Hello/ 
+RUN dotnet restore ./Hello/project.json
+COPY src/Hello ./Hello
+
+RUN dotnet publish ./Hello/project.json -o ./publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:1.0 AS runtime 
+
+WORKDIR /app
+COPY --from=builder /src/publish .
+EXPOSE 5000
+CMD ["dotnet", "Hello.dll"]

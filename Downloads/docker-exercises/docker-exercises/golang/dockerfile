@@ -1,0 +1,14 @@
+
+FROM golang:alpine As builder
+WORKDIR /app
+COPY app.go .
+COPY go.mod .
+RUN go build -o hello
+
+ 
+FROM alpine:latest As runtime
+COPY --from=builder app/hello app/hello
+RUN adduser -D appuser
+USER appuser
+EXPOSE 6000
+CMD ["/app/hello"]
