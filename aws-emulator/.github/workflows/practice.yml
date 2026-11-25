@@ -1,0 +1,15 @@
+name: My Revision CI Pipeline
+
+on:
+  push:
+  branches:
+    - ft/emulator-stuff
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    
+
+    steps:
+      - name: Welcome message
+        run: echo "My first Github Action workflow is running!"
